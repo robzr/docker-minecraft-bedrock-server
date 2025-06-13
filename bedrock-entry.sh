@@ -27,7 +27,7 @@ function lookupVersion() {
 
   # shellcheck disable=SC2034
   for i in {1..3}; do
-    DOWNLOAD_URL=$(restify --user-agent=itzg/minecraft-bedrock-server --headers "accept-language:*" --attribute=data-platform="${platform}" "${downloadPage}" 2> restify.err | jq -r '.[0].href' || echo '')
+    DOWNLOAD_URL=$(restify --user-agent=itzg/minecraft-bedrock-server --headers "accept-language:*" --attribute=aria-label="${platform}" "${downloadPage}" 2> restify.err | jq -r '.[0].href' || echo '')
     [[ -n "${DOWNLOAD_URL}" ]] && break
     sleep 1
   done
